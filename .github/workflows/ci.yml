@@ -22,7 +22,6 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: rahasia123
           POSTGRES_DB: simple_bank
-
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -38,3 +37,9 @@ jobs:
 
       - name: Test
         run: make test
+
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: postgres
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
