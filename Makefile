@@ -19,4 +19,6 @@ migrate1: #if occur error dirty version 1, use this!!!
 sqlc:
 	sqlc generate
 
+test:
+	go test -v ./...
 .PHONY: postgres createdb dropdb migrateup migratedown migrate1 sqlc
