@@ -40,17 +40,12 @@ jobs:
       - name: Install golang-migrate
         run: |
           curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.0/migrate.darwin-amd64.tar.gz | tar xvz
-          sudo mv migrate /usr/bin/migrate
+          sudo mv migrate.darwin-amd64 /usr/bin/migrate
+          export PATH=$PATH:/usr/bin/migrate
           which migrate
           
-          - name: Run migrations
-            run: make migrateup
+      - name: Run migrations
+        run: make migrateup
 
       - name: Test
         run: make test
-
-        env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
