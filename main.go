@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Simple_Bank/api"
-	db "Simple_Bank/db/sqlc"
-	"Simple_Bank/util"
 	"database/sql"
+	"github.com/Federico191/Simple_Bank/api"
+	db "github.com/Federico191/Simple_Bank/db/sqlc"
+	"github.com/Federico191/Simple_Bank/util"
 	_ "github.com/lib/pq"
 	"log"
 )

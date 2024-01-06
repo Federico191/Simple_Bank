@@ -1,9 +1,9 @@
 package db
 
 import (
-	"Simple_Bank/util"
 	"context"
 	"database/sql"
+	"github.com/Federico191/Simple_Bank/util"
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"

@@ -1,8 +1,8 @@
 package db
 
 import (
-	"Simple_Bank/util"
 	"database/sql"
+	"github.com/Federico191/Simple_Bank/util"
 	_ "github.com/lib/pq"
 	"log"
 	"os"

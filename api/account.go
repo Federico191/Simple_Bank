@@ -1,9 +1,9 @@
 package api
 
 import (
-	db "Simple_Bank/db/sqlc"
 	"database/sql"
 	"errors"
+	db "github.com/Federico191/Simple_Bank/db/sqlc"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -11,7 +11,7 @@ import (
 
 type createAccountRequest struct {
 	Owner    string `json:"owner" binding:"required"`
-	Currency string `json:"currency" binding:"required,oneof=USD EUR"`
+	Currency string `json:"currency" binding:"required,oneof=USD EUR IDR"`
 }
 
 func (server *Server) createAccount(ctx *gin.Context) {
