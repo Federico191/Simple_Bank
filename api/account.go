@@ -126,7 +126,11 @@ func (server *Server) deleteAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 	}
 
-	account, _ := server.store.GetAccount(ctx, accountId)
+	account, err := server.store.GetAccount(ctx, accountId)
+	if err != nil {
+		return
+	}
+
 	if isEmptyAccount(account) {
 		ctx.JSON(http.StatusNotFound, gin.H{
 			"message": "Account ID not found",
