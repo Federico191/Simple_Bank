@@ -13,6 +13,9 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:rahasia123@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
+migratedown1:
+	migrate -path db/migration -database "postgresql://root:rahasia123@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
+
 migrate1: #if occur error dirty version 1, use this!!!
 	migrate -path db/migration -database "postgresql://root:rahasia123@localhost:5432/simple_bank?sslmode=disable" force 1
 
