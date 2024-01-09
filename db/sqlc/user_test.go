@@ -4,14 +4,19 @@ import (
 	"context"
 	"github.com/Federico191/Simple_Bank/util"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
 )
 
 func createRandomUser(t *testing.T) User {
+	password := util.RandomString(6)
+	hashedPassword, err := util.HashPassword(password)
+	require.NoError(t, err)
+
 	arg := CreateUserParams{
 		Username:       util.RandomOwner(),
-		HashedPassword: "password",
+		HashedPassword: hashedPassword,
 		FullName:       util.RandomOwner() + util.RandomOwner(),
 		Email:          util.RandomEmail(),
 	}
