@@ -91,7 +91,7 @@ func TestGetAccountAPI(t *testing.T) {
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
 
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			url := fmt.Sprintf("/accounts/%d", tc.accountID)
@@ -183,7 +183,7 @@ func TestCreateAccountAPI(t *testing.T) {
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
 
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			//Marshall body data to JSON
@@ -289,7 +289,7 @@ func TestListAccountAPI(t *testing.T) {
 
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			url := fmt.Sprintf("/accounts")
@@ -388,7 +388,7 @@ func TestUpdateAccountAPI(t *testing.T) {
 			tc.buildStubs(store)
 			recorder := httptest.NewRecorder()
 
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			//Marhsal balance to JSON
 			data, err := json.Marshal(tc.balance)
 			require.NoError(t, err)
@@ -444,7 +444,7 @@ func TestDeleteAccountAPI(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			store := mockdb.NewMockStore(ctrl)
-			server := NewServer(store)
+			server := newTestServer(t, store)
 			tc.buildStubs(store)
 			recorder := httptest.NewRecorder()
 
